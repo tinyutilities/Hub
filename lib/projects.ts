@@ -8,7 +8,13 @@
  * in this list.
  */
 
-export type ProjectStatus = "live" | "in-progress" | "planned" | "archived";
+export type ProjectStatus =
+  | "live"
+  | "use-ready"
+  | "in-progress"
+  | "in-development"
+  | "planned"
+  | "archived";
 
 export interface ProjectAccent {
   /** Gradient start color, used on the card and detail page. */
@@ -51,7 +57,9 @@ export interface Project {
 
 export const statusLabels: Record<ProjectStatus, string> = {
   live: "Live",
+  "use-ready": "Use-ready",
   "in-progress": "In progress",
+  "in-development": "In development",
   planned: "Coming soon",
   archived: "Archived",
 };
@@ -79,24 +87,23 @@ export const projects: Project[] = [
   {
     slug: "reverie",
     name: "Reverie",
-    description: "Details coming soon.",
+    description: "Ready to use — the full write-up is still coming.",
     longDescription:
-      "Reverie is a TinyUtility project currently taking shape. Its full description, status, and feature list will be filled in here once the project is further along.",
-    status: "in-progress",
-    tags: ["placeholder"],
+      "Reverie is a TinyUtility project that's ready to use. Its full description and feature list will be filled in here once the write-up is ready.",
+    status: "use-ready",
+    tags: [],
     technologies: [],
     url: "https://reverie.tinyutility.space",
     accent: { from: "#8fa3f0", to: "#b39ce8" },
-    placeholder: true,
   },
   {
     slug: "everroutine",
     name: "EverRoutine",
-    description: "Details coming soon.",
+    description: "In progress — the full write-up is still coming.",
     longDescription:
-      "EverRoutine is part of the TinyUtility collection. More information — what it does, its current status, and the technologies behind it — will be added here soon.",
-    status: "planned",
-    tags: ["placeholder"],
+      "EverRoutine is part of the TinyUtility collection, currently in progress. More information — what it does and the technologies behind it — will be added here once it's further along.",
+    status: "in-progress",
+    tags: [],
     technologies: [],
     accent: { from: "#6fd6bd", to: "#5fb0c9" },
     placeholder: true,
@@ -104,35 +111,23 @@ export const projects: Project[] = [
   {
     slug: "fsts",
     name: "FSTS",
-    description: "Details coming soon.",
+    description: "A field sales tracking app, still in development.",
     longDescription:
-      "FSTS is part of the TinyUtility collection. More information — what it does, its current status, and the technologies behind it — will be added here soon.",
-    status: "planned",
-    tags: ["placeholder"],
+      "FSTS is a field sales tracking application, currently in development. It isn't public yet, so there's no link to open here — the rest of its description and feature list will be filled in once it's further along.",
+    status: "in-development",
+    tags: [],
     technologies: [],
     accent: { from: "#7ea8d8", to: "#5f7fb0" },
     placeholder: true,
   },
   {
-    slug: "tuition-manager",
-    name: "Tuition Manager",
-    description: "Details coming soon.",
-    longDescription:
-      "Tuition Manager is part of the TinyUtility collection. More information — what it does, its current status, and the technologies behind it — will be added here soon.",
-    status: "planned",
-    tags: ["placeholder"],
-    technologies: [],
-    accent: { from: "#8fd6c1", to: "#6fb8d6" },
-    placeholder: true,
-  },
-  {
     slug: "batchpilot",
     name: "BatchPilot",
-    description: "Details coming soon.",
+    description: "Ready to use — the full write-up is still coming.",
     longDescription:
-      "BatchPilot is part of the TinyUtility collection. More information — what it does, its current status, and the technologies behind it — will be added here soon.",
-    status: "planned",
-    tags: ["placeholder"],
+      "BatchPilot is a TinyUtility project that's ready to use. Its full description and feature list will be filled in here once the write-up is ready.",
+    status: "use-ready",
+    tags: [],
     technologies: [],
     accent: { from: "#6a8fd0", to: "#8f6fd0" },
     placeholder: true,

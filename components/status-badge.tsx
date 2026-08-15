@@ -2,7 +2,9 @@ import { ProjectStatus, statusLabels } from "@/lib/projects";
 
 const dotColor: Record<ProjectStatus, string> = {
   live: "bg-seaglass",
+  "use-ready": "bg-seaglass",
   "in-progress": "bg-cyan-glow",
+  "in-development": "bg-muted-2",
   planned: "bg-muted-2",
   archived: "bg-muted-2",
 };
