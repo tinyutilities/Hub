@@ -36,6 +36,12 @@ export interface Project {
   /** Notable, verified features — omitted rather than guessed. */
   features?: string[];
   /**
+   * True only for the project that IS this website. Its card omits the
+   * "Open ↗" action, since opening it would just point back at the page
+   * the visitor is already on.
+   */
+  hideOpenOnCard?: boolean;
+  /**
    * True when description/details are still placeholders rather than
    * verified information. Surfaced in the UI as "Coming soon" instead of
    * being presented as fact.
@@ -62,6 +68,7 @@ export const projects: Project[] = [
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     url: "https://hub.tinyutility.space",
     featured: true,
+    hideOpenOnCard: true,
     accent: { from: "#5fd0e8", to: "#7c93f0" },
     features: [
       "An editorial, non-uniform collection layout instead of a plain card grid",

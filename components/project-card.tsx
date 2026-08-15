@@ -14,8 +14,18 @@ import { StatusBadge } from "@/components/status-badge";
  *    nested inside it, so no click-bubbling workaround is needed.
  */
 export function ProjectCard({ project }: { project: Project }) {
-  const { slug, name, description, status, tags, featured, accent, url, placeholder } =
-    project;
+  const {
+    slug,
+    name,
+    description,
+    status,
+    tags,
+    featured,
+    accent,
+    url,
+    placeholder,
+    hideOpenOnCard,
+  } = project;
 
   return (
     <article
@@ -71,7 +81,7 @@ export function ProjectCard({ project }: { project: Project }) {
             ))}
           </ul>
 
-          {url && !placeholder ? (
+          {hideOpenOnCard ? null : url && !placeholder ? (
             <a
               href={url}
               target="_blank"

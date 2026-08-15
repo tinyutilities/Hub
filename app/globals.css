@@ -98,9 +98,9 @@ body {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .ambient-orb[data-drift="a"] { animation: drift-a 26s ease-in-out infinite; }
-  .ambient-orb[data-drift="b"] { animation: drift-b 32s ease-in-out infinite; }
-  .ambient-orb[data-drift="c"] { animation: drift-c 22s ease-in-out infinite; }
+  .ambient-orb[data-drift="a"] { animation: drift-a 32s ease-in-out infinite; }
+  .ambient-orb[data-drift="b"] { animation: drift-b 39s ease-in-out infinite; }
+  .ambient-orb[data-drift="c"] { animation: drift-c 27s ease-in-out infinite; }
 }
 
 @media (prefers-reduced-motion: reduce) {

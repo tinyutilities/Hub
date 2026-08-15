@@ -10,7 +10,7 @@ export const siteConfig = {
   /**
    * TEMPORARY placeholder description — replace when final copy is ready.
    */
-  tagline: "A collection of things I've built.",
+  tagline: "Six projects, built along the way.",
   description:
     "TinyUtility Hub is a living collection of websites, tools, and experiments built under TinyUtility.",
   url: "https://hub.tinyutility.space",
