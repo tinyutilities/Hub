@@ -126,6 +126,7 @@ export const projects: Project[] = [
     status: "use-ready",
     tags: ["workflow", "management", "productivity"],
     technologies: [],
+    url: "https://batchpilot.tinyutility.space",
     accent: { from: "#6a8fd0", to: "#8f6fd0" },
   },
 ];

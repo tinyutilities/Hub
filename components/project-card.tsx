@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Project } from "@/lib/projects";
 import { StatusBadge } from "@/components/status-badge";
-import { OceanRibbon } from "@/components/ocean-ribbon";
+import { OceanPhoto } from "@/components/ocean-photo";
 
 /**
  * A project card exposes two distinct, unambiguous actions:
@@ -41,7 +41,7 @@ export function ProjectCard({ project }: { project: Project }) {
         }}
       />
 
-      {featured && <OceanRibbon />}
+      {featured && <OceanPhoto />}
 
       <Link
         href={`/projects/${slug}`}

@@ -124,21 +124,6 @@ body {
   to { transform: rotate(360deg); }
 }
 
-@keyframes ocean-drift-back {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(-1%, 0.6%, 0) scale(1.015); }
-}
-
-@keyframes ocean-drift-mid {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(-1.6%, 1%, 0) scale(1.02); }
-}
-
-@keyframes ocean-drift-line {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(-2.2%, -0.8%, 0); }
-}
-
 .ambient-orb {
   position: absolute;
   border-radius: 9999px;
@@ -152,21 +137,12 @@ body {
   will-change: transform;
 }
 
-.ocean-layer-back,
-.ocean-layer-mid,
-.ocean-layer-line {
-  will-change: transform;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .ambient-orb[data-drift="a"] { animation: drift-a 32s ease-in-out infinite; }
   .ambient-orb[data-drift="b"] { animation: drift-b 39s ease-in-out infinite; }
   .ambient-orb[data-drift="c"] { animation: drift-c 27s ease-in-out infinite; }
   .ambient-orb[data-drift="d"] { animation: drift-d 42s ease-in-out infinite; }
   .ambient-ring { animation: ring-rotate 150s linear infinite; }
-  .ocean-layer-back { animation: ocean-drift-back 58s ease-in-out infinite; }
-  .ocean-layer-mid { animation: ocean-drift-mid 44s ease-in-out infinite; }
-  .ocean-layer-line { animation: ocean-drift-line 36s ease-in-out infinite; }
 }
 
 @media (prefers-reduced-motion: reduce) {
