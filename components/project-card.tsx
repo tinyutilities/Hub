@@ -1,0 +1,93 @@
+import Link from "next/link";
+import { Project, statusLabels } from "@/lib/projects";
+import { StatusBadge } from "@/components/status-badge";
+
+/**
+ * A project card exposes two distinct, unambiguous actions:
+ *
+ * 1. The card itself (including its title and body) is a full-bleed link
+ *    to the Hub detail page — implemented as an absolutely positioned
+ *    overlay `<Link>` with z-index 0, so any click lands on it.
+ * 2. "Open ↗" is a separate, real `<a>` with an explicit higher z-index
+ *    that sits on top of the overlay, so it always wins the click
+ *    regardless of DOM order. It is a sibling of the overlay link, not
+ *    nested inside it, so no click-bubbling workaround is needed.
+ */
+export function ProjectCard({ project }: { project: Project }) {
+  const { slug, name, description, status, tags, featured, accent, url, placeholder } =
+    project;
+
+  return (
+    <article
+      className={`group relative isolate flex flex-col justify-between overflow-hidden rounded-3xl p-6 glass-panel transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_20px_60px_-20px_rgba(20,60,110,0.55)] sm:p-8 ${
+        featured ? "min-h-[22rem] lg:col-span-2" : "min-h-[16rem]"
+      }`}
+    >
+      {/* Card identity glow, tied to this project's accent colors. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-20 blur-3xl transition-transform duration-700 ease-out group-hover:scale-110"
+        style={{
+          background: `radial-gradient(circle, ${accent.from}, ${accent.to} 70%, transparent 75%)`,
+        }}
+      />
+
+      <Link
+        href={`/projects/${slug}`}
+        className="absolute inset-0 z-0 rounded-[inherit]"
+        aria-label={`View ${name} details`}
+      />
+
+      <div className="relative flex items-start justify-between gap-4">
+        <StatusBadge status={status} />
+        {featured && (
+          <span className="rounded-full border border-glass-border bg-white/[0.03] px-2.5 py-1 text-xs font-medium tracking-wide text-cyan-glow">
+            Featured
+          </span>
+        )}
+      </div>
+
+      <div className="relative mt-6 flex flex-1 flex-col justify-end gap-3 sm:mt-8">
+        <h3
+          className={`font-display text-foreground ${
+            featured ? "text-4xl sm:text-5xl" : "text-2xl sm:text-3xl"
+          }`}
+        >
+          {name}
+        </h3>
+        <p className="max-w-md text-sm leading-relaxed text-muted sm:text-base">
+          {description}
+        </p>
+
+        <div className="mt-1 flex flex-wrap items-center justify-between gap-4">
+          <ul className="flex flex-wrap gap-2">
+            {tags.slice(0, 3).map((tag) => (
+              <li
+                key={tag}
+                className="rounded-full bg-white/[0.04] px-2.5 py-1 text-xs text-muted-2"
+              >
+                {tag}
+              </li>
+            ))}
+          </ul>
+
+          {url && !placeholder ? (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative z-10 inline-flex items-center gap-1 rounded-full border border-glass-border bg-white/[0.04] px-4 py-2 text-sm font-medium text-foreground transition-colors duration-300 hover:border-cyan-glow/50 hover:bg-white/[0.08] hover:text-cyan-glow"
+              aria-label={`Open ${name} (opens in a new tab)`}
+            >
+              Open <span aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <span className="relative z-10 inline-flex items-center gap-1 rounded-full border border-transparent px-4 py-2 text-sm font-medium text-muted-2">
+              {statusLabels[status]}
+            </span>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
