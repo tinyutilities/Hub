@@ -78,7 +78,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
         <div
           className={`mt-1 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 ${
-            featured ? "" : "min-h-[5.5rem]"
+            featured ? "" : "min-h-[6.75rem]"
           }`}
         >
           <ul className="flex flex-wrap gap-2">

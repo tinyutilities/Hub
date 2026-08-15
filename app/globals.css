@@ -124,6 +124,15 @@ body {
   to { transform: rotate(360deg); }
 }
 
+@keyframes ocean-photo-line-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-0.8%, 0.4%, 0); }
+}
+
+.ocean-photo-line {
+  will-change: transform;
+}
+
 .ambient-orb {
   position: absolute;
   border-radius: 9999px;
@@ -143,6 +152,7 @@ body {
   .ambient-orb[data-drift="c"] { animation: drift-c 27s ease-in-out infinite; }
   .ambient-orb[data-drift="d"] { animation: drift-d 42s ease-in-out infinite; }
   .ambient-ring { animation: ring-rotate 150s linear infinite; }
+  .ocean-photo-line { animation: ocean-photo-line-drift 64s ease-in-out infinite; }
 }
 
 @media (prefers-reduced-motion: reduce) {
