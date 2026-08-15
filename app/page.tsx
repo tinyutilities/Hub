@@ -10,7 +10,7 @@ export default function Home() {
     <main className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 pb-24 pt-20 sm:px-10 sm:pt-28 lg:px-12">
       <section className="mb-20 sm:mb-28">
         <p className="text-xs font-medium uppercase tracking-[0.35em] text-muted-2">
-          TinyUtility
+          Hub
         </p>
         <h1 className="mt-5 font-display text-6xl italic leading-none text-foreground sm:text-8xl">
           {siteConfig.name}

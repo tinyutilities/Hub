@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Project, statusLabels } from "@/lib/projects";
 import { StatusBadge } from "@/components/status-badge";
+import { OceanRibbon } from "@/components/ocean-ribbon";
 
 /**
  * A project card exposes two distinct, unambiguous actions:
@@ -41,6 +42,8 @@ export function ProjectCard({ project }: { project: Project }) {
           background: `radial-gradient(circle, ${accent.from}, ${accent.to} 70%, transparent 75%)`,
         }}
       />
+
+      {featured && <OceanRibbon />}
 
       <Link
         href={`/projects/${slug}`}

@@ -114,6 +114,21 @@ body {
   50% { transform: translate3d(-2%, -3%, 0); }
 }
 
+@keyframes drift-d {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-2%, 2%, 0) scale(1.03); }
+}
+
+@keyframes ring-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ribbon-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-1.5%, 1%, 0) scale(1.015); }
+}
+
 .ambient-orb {
   position: absolute;
   border-radius: 9999px;
@@ -121,10 +136,19 @@ body {
   will-change: transform;
 }
 
+.ambient-ring {
+  position: absolute;
+  filter: blur(6px);
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .ambient-orb[data-drift="a"] { animation: drift-a 32s ease-in-out infinite; }
   .ambient-orb[data-drift="b"] { animation: drift-b 39s ease-in-out infinite; }
   .ambient-orb[data-drift="c"] { animation: drift-c 27s ease-in-out infinite; }
+  .ambient-orb[data-drift="d"] { animation: drift-d 42s ease-in-out infinite; }
+  .ambient-ring { animation: ring-rotate 150s linear infinite; }
+  .ocean-ribbon { animation: ribbon-drift 46s ease-in-out infinite; }
 }
 
 @media (prefers-reduced-motion: reduce) {

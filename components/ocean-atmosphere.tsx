@@ -25,17 +25,22 @@ export function OceanAtmosphere() {
         }}
       />
 
-      {/* Ambient drifting sea-glass orbs. Kept to three, small blur radii,
-          transform-only animation — cheap even on low-end devices. */}
+      {/* Ambient drifting sea-glass orbs and one soft ring — small blur
+          radii, transform-only animation, cheap even on low-end devices.
+          Two orbs (a, d) carry a small off-center highlight layer so they
+          read as soft glass spheres with a faint reflection rather than
+          flat blurred discs. Positioned around the edges and between
+          sections so nothing sits directly behind card content. */}
       <div
         data-drift="a"
-        className="ambient-orb hidden opacity-[0.16] sm:block"
+        className="ambient-orb hidden opacity-[0.18] sm:block"
         style={{
           top: "8%",
           right: "8%",
           width: "26rem",
           height: "26rem",
           background:
+            "radial-gradient(circle at 32% 28%, rgba(255,255,255,0.4), transparent 9%), " +
             "radial-gradient(circle at 35% 35%, #7fd8e8, transparent 70%)",
         }}
       />
@@ -63,6 +68,44 @@ export function OceanAtmosphere() {
             "radial-gradient(circle at 50% 50%, #b3c8f0, transparent 70%)",
         }}
       />
+      <div
+        data-drift="d"
+        className="ambient-orb hidden opacity-[0.15] lg:block"
+        style={{
+          top: "58%",
+          right: "-3rem",
+          width: "15rem",
+          height: "15rem",
+          background:
+            "radial-gradient(circle at 30% 28%, rgba(255,255,255,0.35), transparent 10%), " +
+            "radial-gradient(circle at 38% 38%, #7c93f0, transparent 70%)",
+        }}
+      />
+
+      {/* A single soft ring, standing in for a sea-glass/porthole form.
+          Rotates extremely slowly — full turn takes well over two
+          minutes, so it reads as still unless watched closely. */}
+      <svg
+        aria-hidden="true"
+        className="ambient-ring hidden opacity-[0.1] lg:block"
+        style={{ bottom: "-6rem", right: "-4rem", width: "26rem", height: "26rem" }}
+        viewBox="0 0 200 200"
+      >
+        <defs>
+          <linearGradient id="ring-gradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#6fd3e0" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#7c93f0" stopOpacity="0.15" />
+          </linearGradient>
+        </defs>
+        <circle
+          cx="100"
+          cy="100"
+          r="72"
+          fill="none"
+          stroke="url(#ring-gradient)"
+          strokeWidth="10"
+        />
+      </svg>
 
       {/* Faint wave silhouette anchoring the bottom of the viewport. */}
       <svg
