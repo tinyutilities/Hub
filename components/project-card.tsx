@@ -29,14 +29,14 @@ export function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article
-      className={`group relative isolate flex flex-col justify-between overflow-hidden rounded-3xl p-6 glass-panel transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_20px_60px_-20px_rgba(20,60,110,0.55)] sm:p-8 ${
-        featured ? "min-h-[22rem] lg:col-span-2" : "min-h-[16rem]"
+      className={`group relative isolate flex flex-col justify-between overflow-hidden rounded-3xl p-6 glass-panel card-surface sm:p-8 ${
+        featured ? "min-h-[20rem] sm:min-h-[22rem] lg:p-12" : "min-h-[16rem]"
       }`}
     >
       {/* Card identity glow, tied to this project's accent colors. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-20 blur-3xl transition-transform duration-700 ease-out group-hover:scale-110"
+        className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-20 blur-3xl transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
         style={{
           background: `radial-gradient(circle, ${accent.from}, ${accent.to} 70%, transparent 75%)`,
         }}
@@ -59,8 +59,10 @@ export function ProjectCard({ project }: { project: Project }) {
 
       <div className="relative mt-6 flex flex-1 flex-col justify-end gap-3 sm:mt-8">
         <h3
-          className={`font-display text-foreground ${
-            featured ? "text-4xl sm:text-5xl" : "text-2xl sm:text-3xl"
+          className={`font-display leading-tight text-foreground ${
+            featured
+              ? "text-4xl sm:text-5xl"
+              : "flex min-h-[2.4em] items-center text-2xl sm:text-3xl"
           }`}
         >
           {name}
@@ -86,7 +88,7 @@ export function ProjectCard({ project }: { project: Project }) {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative z-10 inline-flex items-center gap-1 rounded-full border border-glass-border bg-white/[0.04] px-4 py-2 text-sm font-medium text-foreground transition-colors duration-300 hover:border-cyan-glow/50 hover:bg-white/[0.08] hover:text-cyan-glow"
+              className="relative z-10 inline-flex items-center gap-1 rounded-full border border-glass-border bg-white/[0.04] px-4 py-2 text-sm font-medium text-foreground transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-cyan-glow/50 hover:bg-white/[0.08] hover:text-cyan-glow"
               aria-label={`Open ${name} (opens in a new tab)`}
             >
               Open <span aria-hidden="true">↗</span>

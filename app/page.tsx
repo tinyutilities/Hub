@@ -1,11 +1,10 @@
-import { getAllProjects, getFeaturedProject, getSecondaryProjects } from "@/lib/projects";
+import { getFeaturedProject, getSecondaryProjects } from "@/lib/projects";
 import { ProjectCard } from "@/components/project-card";
 import { siteConfig } from "@/lib/site-config";
 
 export default function Home() {
   const featured = getFeaturedProject();
   const secondary = getSecondaryProjects();
-  const total = getAllProjects().length;
 
   return (
     <main className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 pb-24 pt-20 sm:px-10 sm:pt-28 lg:px-12">
@@ -21,21 +20,21 @@ export default function Home() {
         </p>
       </section>
 
+      {featured && (
+        <section aria-label="Featured" className="mb-16 sm:mb-20">
+          <ProjectCard project={featured} />
+        </section>
+      )}
+
       <section aria-labelledby="projects-heading">
-        <div className="mb-8 flex items-end justify-between gap-4 sm:mb-10">
-          <h2
-            id="projects-heading"
-            className="font-display text-3xl text-foreground sm:text-4xl"
-          >
-            Projects
-          </h2>
-          <p className="hidden text-sm text-muted-2 sm:block">
-            {total} things, and counting.
-          </p>
-        </div>
+        <h2
+          id="projects-heading"
+          className="mb-6 text-xs font-medium uppercase tracking-[0.35em] text-muted-2 sm:mb-8"
+        >
+          Projects
+        </h2>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-          {featured && <ProjectCard project={featured} />}
           {secondary.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}

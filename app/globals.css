@@ -72,6 +72,30 @@ body {
   -webkit-backdrop-filter: blur(20px);
 }
 
+/* Project card hover motion: slow, soft, and fluid — glass settling
+   rather than a UI element snapping into a new state. Both entering and
+   leaving use the same duration/curve, so the interaction feels equally
+   polished in either direction. The existing global
+   prefers-reduced-motion rule (below) collapses these transitions to
+   near-instant, which removes the floating feel while still applying the
+   end state immediately. */
+.card-surface {
+  transition:
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 8px 30px -22px rgba(8, 20, 38, 0.4);
+}
+
+.card-surface:hover,
+.card-surface:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 55px -20px rgba(20, 60, 110, 0.45);
+  border-color: rgba(178, 209, 240, 0.26);
+  background: rgba(24, 52, 88, 0.5);
+}
+
 /* Ambient floating objects: slow, subtle, transform-only animation so it
    stays cheap for the compositor. Disabled entirely for users who prefer
    reduced motion. */
