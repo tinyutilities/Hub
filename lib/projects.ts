@@ -47,12 +47,6 @@ export interface Project {
    * the visitor is already on.
    */
   hideOpenOnCard?: boolean;
-  /**
-   * True when description/details are still placeholders rather than
-   * verified information. Surfaced in the UI as "Coming soon" instead of
-   * being presented as fact.
-   */
-  placeholder?: boolean;
 }
 
 export const statusLabels: Record<ProjectStatus, string> = {
@@ -66,13 +60,14 @@ export const statusLabels: Record<ProjectStatus, string> = {
 
 export const projects: Project[] = [
   {
-    slug: "tinyutility",
+    slug: "tinyutility-hub",
     name: "TinyUtility Hub",
-    description: "The collection itself — the home you're standing in.",
+    description:
+      "The collection itself — a home for the things I build, experiment with, and put to use.",
     longDescription:
       "TinyUtility Hub is the home for everything built under TinyUtility: websites, web apps, tools, experiments, and prototypes, gathered in one place instead of scattered across separate links. It's built to make adding the next project as easy as adding one entry to a list.",
     status: "live",
-    tags: ["hub", "meta", "personal"],
+    tags: ["hub", "portfolio", "personal"],
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     url: "https://hub.tinyutility.space",
     featured: true,
@@ -87,11 +82,12 @@ export const projects: Project[] = [
   {
     slug: "reverie",
     name: "Reverie",
-    description: "Ready to use — the full write-up is still coming.",
+    description:
+      "A private space for two people to stay connected, share moments, and build memories together.",
     longDescription:
-      "Reverie is a TinyUtility project that's ready to use. Its full description and feature list will be filled in here once the write-up is ready.",
+      "Reverie is a private space for two people to stay connected, share moments, and build memories together. It's ready to use — a fuller write-up will be added here soon.",
     status: "use-ready",
-    tags: [],
+    tags: ["personal", "couples", "social"],
     technologies: [],
     url: "https://reverie.tinyutility.space",
     accent: { from: "#8fa3f0", to: "#b39ce8" },
@@ -99,38 +95,38 @@ export const projects: Project[] = [
   {
     slug: "everroutine",
     name: "EverRoutine",
-    description: "In progress — the full write-up is still coming.",
+    description:
+      "A student-focused planner for keeping classes, assignments, routines, and academic life in one place.",
     longDescription:
-      "EverRoutine is part of the TinyUtility collection, currently in progress. More information — what it does and the technologies behind it — will be added here once it's further along.",
+      "EverRoutine is a student-focused planner for keeping classes, assignments, routines, and academic life in one place. It's currently in progress — there's no public link yet, and more detail will be added here once it's further along.",
     status: "in-progress",
-    tags: [],
+    tags: ["student", "productivity", "planning"],
     technologies: [],
     accent: { from: "#6fd6bd", to: "#5fb0c9" },
-    placeholder: true,
   },
   {
     slug: "fsts",
     name: "FSTS",
-    description: "A field sales tracking app, still in development.",
+    description:
+      "A field-sales tracking system for managing field activity, location tracking, dealer visits, and reporting.",
     longDescription:
-      "FSTS is a field sales tracking application, currently in development. It isn't public yet, so there's no link to open here — the rest of its description and feature list will be filled in once it's further along.",
+      "FSTS is a field-sales tracking system for managing field activity, location tracking, dealer visits, and reporting. It's still in development and isn't publicly linked from the Hub yet — that will be added once it's ready to show.",
     status: "in-development",
-    tags: [],
+    tags: ["business", "field-sales", "tracking"],
     technologies: [],
     accent: { from: "#7ea8d8", to: "#5f7fb0" },
-    placeholder: true,
   },
   {
     slug: "batchpilot",
     name: "BatchPilot",
-    description: "Ready to use — the full write-up is still coming.",
+    description:
+      "A practical workflow tool built to make batch-based operations easier to manage.",
     longDescription:
-      "BatchPilot is a TinyUtility project that's ready to use. Its full description and feature list will be filled in here once the write-up is ready.",
+      "BatchPilot is a practical workflow tool built to make batch-based operations easier to manage. It's ready to use — a fuller write-up will be added here soon.",
     status: "use-ready",
-    tags: [],
+    tags: ["workflow", "management", "productivity"],
     technologies: [],
     accent: { from: "#6a8fd0", to: "#8f6fd0" },
-    placeholder: true,
   },
 ];
 

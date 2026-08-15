@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllProjects, getProjectBySlug, statusLabels } from "@/lib/projects";
+import { getAllProjects, getProjectBySlug } from "@/lib/projects";
 import { StatusBadge } from "@/components/status-badge";
 
 interface PageProps {
@@ -39,8 +39,9 @@ export default async function ProjectPage({ params }: PageProps) {
     notFound();
   }
 
-  const { name, description, longDescription, status, tags, technologies, url, accent, features, placeholder } =
+  const { name, description, longDescription, status, tags, technologies, url, accent, features, hideOpenOnCard } =
     project;
+  const showOpenAction = Boolean(url) && !hideOpenOnCard;
 
   return (
     <main className="relative mx-auto flex w-full max-w-3xl flex-1 flex-col px-6 pb-24 pt-16 sm:px-10 sm:pt-24 lg:px-12">
@@ -122,8 +123,8 @@ export default async function ProjectPage({ params }: PageProps) {
           </div>
         )}
 
-        <div className="relative mt-10">
-          {url && !placeholder ? (
+        {showOpenAction && (
+          <div className="relative mt-10">
             <a
               href={url}
               target="_blank"
@@ -133,12 +134,8 @@ export default async function ProjectPage({ params }: PageProps) {
             >
               Open <span aria-hidden="true">↗</span>
             </a>
-          ) : (
-            <span className="inline-flex items-center gap-2 rounded-full border border-glass-border px-6 py-3 text-sm font-medium text-muted-2">
-              {statusLabels[status]}
-            </span>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </main>
   );
