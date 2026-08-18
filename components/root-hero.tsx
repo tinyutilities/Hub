@@ -1,10 +1,14 @@
 import { RootSite } from "@/lib/root";
 import { StatusBadge } from "@/components/status-badge";
+import { OceanPhoto } from "@/components/ocean-photo";
 
 /**
  * The homepage's largest, most visually important element — TinyUtility
  * itself, the root the project timeline grows out of. Reuses the same
- * glass/typography/motion language as every card on the page, scaled up.
+ * glass/typography/motion language as every card on the page, scaled
+ * up, and carries the ocean photograph — the expansive, original
+ * treatment, distinct from TinyUtility Hub's own abstract `HubGlow`
+ * further down the timeline.
  *
  * Unlike a project card, this has exactly one action (visit the real
  * site), so it's a single real `<a>` wrapping the whole card rather than
@@ -12,7 +16,7 @@ import { StatusBadge } from "@/components/status-badge";
  * to resolve, no nested-link concerns, one clear tab stop.
  */
 export function RootHero({ root }: { root: RootSite }) {
-  const { name, tagline, status, url, tags, accent } = root;
+  const { name, tagline, status, url, tags } = root;
 
   return (
     <a
@@ -22,20 +26,7 @@ export function RootHero({ root }: { root: RootSite }) {
       aria-label={`Visit ${name} (opens in a new tab)`}
       className="group relative isolate block overflow-hidden rounded-3xl p-8 glass-panel card-surface sm:p-12 lg:p-16"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-25 blur-3xl transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-        style={{
-          background: `radial-gradient(circle, ${accent.from}, ${accent.to} 70%, transparent 75%)`,
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-32 -left-16 h-64 w-64 rounded-full opacity-15 blur-3xl"
-        style={{
-          background: `radial-gradient(circle, ${accent.to}, transparent 70%)`,
-        }}
-      />
+      <OceanPhoto />
 
       <div className="relative flex items-start justify-between gap-4">
         <StatusBadge status={status} />

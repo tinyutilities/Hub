@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { Project } from "@/lib/projects";
 import { StatusBadge } from "@/components/status-badge";
-import { OceanPhoto } from "@/components/ocean-photo";
+import { HubGlow } from "@/components/hub-glow";
 
 /**
- * A project card exposes two distinct, unambiguous actions:
+ * A timeline teaser card — enough to understand what a project is and
+ * decide whether to click through to its `/projects/[slug]` detail
+ * page, not the full story. Exposes two distinct, unambiguous actions:
  *
  * 1. The card itself (including its title and body) is a full-bleed link
- *    to the Hub detail page — implemented as an absolutely positioned
+ *    to the detail page — implemented as an absolutely positioned
  *    overlay `<Link>` with z-index 0, so any click lands on it.
  * 2. "Open ↗" is a separate, real `<a>` with an explicit higher z-index
  *    that sits on top of the overlay, so it always wins the click
@@ -22,9 +24,9 @@ import { OceanPhoto } from "@/components/ocean-photo";
  * than filled with a redundant status repeat.
  *
  * `spotlight` (currently only TinyUtility Hub, where the timeline's
- * threads come together) renders with the ocean photo, a touch more
- * size, and a "Featured" label — still a timeline card, not the
- * page-dominating hero that role belongs to `RootHero` now.
+ * threads come together) renders with its own abstract `HubGlow`
+ * backdrop, a touch more size, and a "Featured" label — still a
+ * timeline card, clearly secondary to the root hero above it.
  */
 export function ProjectCard({ project }: { project: Project }) {
   const { slug, name, description, status, tags, spotlight, accent, url, hideOpenOnCard } =
@@ -33,20 +35,20 @@ export function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article
-      className={`group relative isolate flex flex-col justify-between overflow-hidden rounded-3xl p-6 glass-panel card-surface sm:p-8 ${
-        spotlight ? "min-h-[19rem] sm:min-h-[21rem]" : "min-h-[16rem]"
+      className={`group relative isolate flex flex-col justify-between overflow-hidden rounded-3xl p-5 glass-panel card-surface sm:p-6 ${
+        spotlight ? "min-h-[15rem] sm:min-h-[16.5rem]" : "min-h-[12.5rem] sm:min-h-[13.5rem]"
       }`}
     >
       {/* Card identity glow, tied to this project's accent colors. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-20 blur-3xl transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+        className="pointer-events-none absolute -right-14 -top-14 h-40 w-40 rounded-full opacity-20 blur-3xl transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
         style={{
           background: `radial-gradient(circle, ${accent.from}, ${accent.to} 70%, transparent 75%)`,
         }}
       />
 
-      {spotlight && <OceanPhoto />}
+      {spotlight && <HubGlow />}
 
       <Link
         href={`/projects/${slug}`}
@@ -63,19 +65,19 @@ export function ProjectCard({ project }: { project: Project }) {
         )}
       </div>
 
-      <div className="relative mt-6 flex flex-1 flex-col justify-end gap-3 sm:mt-8">
+      <div className="relative mt-4 flex flex-1 flex-col justify-end gap-2 sm:mt-5">
         <h3
-          className={`flex min-h-[2.4em] items-center font-display leading-tight text-foreground ${
-            spotlight ? "text-3xl sm:text-4xl" : "text-2xl sm:text-3xl"
+          className={`flex min-h-[2em] items-center font-display leading-tight text-foreground ${
+            spotlight ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl"
           }`}
         >
           {name}
         </h3>
-        <p className="min-h-[4.8em] max-w-md text-sm leading-relaxed text-muted line-clamp-3 sm:text-base">
+        <p className="min-h-[2.8em] max-w-md text-sm leading-relaxed text-muted line-clamp-2">
           {description}
         </p>
 
-        <div className="mt-1 flex min-h-[6.75rem] flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <div className="mt-1 flex min-h-[6.25rem] flex-wrap items-center justify-between gap-x-3 gap-y-2">
           <ul className="flex flex-wrap gap-2">
             {tags.slice(0, 3).map((tag) => (
               <li
@@ -92,7 +94,7 @@ export function ProjectCard({ project }: { project: Project }) {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative z-10 inline-flex items-center gap-1 rounded-full border border-glass-border bg-white/[0.04] px-4 py-2 text-sm font-medium text-foreground transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-cyan-glow/50 hover:bg-white/[0.08] hover:text-cyan-glow"
+              className="relative z-10 inline-flex items-center gap-1 rounded-full border border-glass-border bg-white/[0.04] px-3.5 py-1.5 text-sm font-medium text-foreground transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-cyan-glow/50 hover:bg-white/[0.08] hover:text-cyan-glow"
               aria-label={`Open ${name} (opens in a new tab)`}
             >
               Open <span aria-hidden="true">↗</span>

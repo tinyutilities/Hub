@@ -53,7 +53,7 @@ export function Timeline({ projects }: { projects: Project[] }) {
           >
             <span
               aria-hidden="true"
-              className="absolute left-0 top-9 h-[14px] w-[14px] -translate-x-1/2 rounded-full lg:left-1/2"
+              className="absolute left-0 top-8 h-[14px] w-[14px] -translate-x-1/2 rounded-full lg:left-1/2"
               style={{
                 background: `radial-gradient(circle, ${project.accent.to}, ${project.accent.from})`,
                 boxShadow: GLOWING_STATUSES.has(project.status)

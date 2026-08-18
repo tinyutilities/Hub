@@ -1,17 +1,21 @@
 import Image from "next/image";
 
 /**
- * A real photograph of the sea, used as the artwork inside the featured
- * TinyUtility Hub card.
+ * A real photograph of the sea, used as the artwork inside the
+ * TinyUtility root hero — the origin the whole project timeline grows
+ * out of, so it gets the expansive ocean treatment. (TinyUtility Hub,
+ * further down the timeline, has its own distinct abstract treatment —
+ * see `HubGlow` — so the two special cards don't read as duplicates of
+ * each other.)
  *
- * The image now spans the full card (not just its right portion) so
- * there's no seam where a narrower image wrapper used to meet the
- * card's own glass background — one continuous set of gradients fades
- * it from fully opaque navy on the left (where the title/description
- * sit) to clear on the right, plus a bottom vignette so text stays
- * legible on narrow screens where it wraps across the full width. A
- * soft radial glow sits over the photo's brightest sky break for a
- * more cinematic feel, and a faint blue wash deepens the water.
+ * The image spans the full card so there's no seam where a narrower
+ * image wrapper would meet the card's own glass background — one
+ * continuous set of gradients fades it from fully opaque navy on the
+ * left (where the large title/description sit) to clear on the right,
+ * plus a bottom vignette so text stays legible on narrow screens where
+ * it wraps across the full width. A soft radial glow sits over the
+ * photo's brightest sky break for a more cinematic feel, and a faint
+ * blue wash deepens the water.
  *
  * One thin curved line traces a contour in the water — a quiet nod to
  * the ocean's motion — with an extremely slow, subtle drift that
@@ -57,8 +61,8 @@ export function OceanPhoto() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(90deg, var(--background) 0%, rgba(5,11,22,0.94) 22%, rgba(5,11,22,0.72) 40%, rgba(5,11,22,0.32) 60%, rgba(5,11,22,0.08) 78%, transparent 92%), " +
-            "linear-gradient(180deg, rgba(5,11,22,0.35) 0%, transparent 22%, transparent 55%, rgba(5,11,22,0.55) 88%, rgba(5,11,22,0.7) 100%), " +
+            "linear-gradient(90deg, var(--background) 0%, rgba(5,11,22,0.96) 28%, rgba(5,11,22,0.8) 44%, rgba(5,11,22,0.4) 62%, rgba(5,11,22,0.1) 80%, transparent 94%), " +
+            "linear-gradient(180deg, rgba(5,11,22,0.4) 0%, transparent 22%, transparent 55%, rgba(5,11,22,0.55) 88%, rgba(5,11,22,0.7) 100%), " +
             "linear-gradient(270deg, rgba(5,11,22,0.25) 0%, transparent 10%)",
         }}
       />

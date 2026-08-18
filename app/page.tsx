@@ -21,7 +21,7 @@ export default function Home() {
         </p>
       </section>
 
-      <section aria-label="TinyUtility" className="mb-16 sm:mb-24">
+      <section aria-label="TinyUtility" className="mb-12 sm:mb-16">
         <RootHero root={tinyUtilityRoot} />
       </section>
 

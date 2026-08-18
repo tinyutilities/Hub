@@ -38,9 +38,10 @@ export interface Project {
   url?: string;
   /**
    * True only for the project that marks where the timeline's threads
-   * come together (TinyUtility Hub). Renders with its ocean photo, a
-   * touch more visual weight, and a "Featured" label — still sized as
-   * a timeline card, not a page-dominating hero.
+   * come together (TinyUtility Hub). Renders with its own abstract
+   * `HubGlow` backdrop, a touch more visual weight, and a "Featured"
+   * label — still sized as a timeline card, not a page-dominating hero
+   * (that role, and the ocean photograph, belong to the root instead).
    */
   spotlight?: boolean;
   accent: ProjectAccent;
@@ -109,11 +110,11 @@ export const projects: Project[] = [
   },
   {
     slug: "fsts",
-    name: "FSTS",
+    name: "Field Tracking System",
     description:
       "A field-sales tracking system for managing field activity, location tracking, dealer visits, and reporting.",
     longDescription:
-      "FSTS is a field-sales tracking system for managing field activity, location tracking, dealer visits, and reporting. It's still in development and isn't publicly linked from the Hub yet — that will be added once it's ready to show.",
+      "Field Tracking System is a field-sales tracking system for managing field activity, location tracking, dealer visits, and reporting. It's still in development and isn't publicly linked from the Hub yet — that will be added once it's ready to show.",
     status: "in-development",
     tags: ["business", "field-sales", "tracking"],
     technologies: [],
