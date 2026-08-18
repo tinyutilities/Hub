@@ -89,10 +89,11 @@ export const projects: Project[] = [
     description:
       "A student-focused planner for keeping classes, assignments, routines, and academic life in one place.",
     longDescription:
-      "EverRoutine is a student-focused planner for keeping classes, assignments, routines, and academic life in one place. It's currently in progress — there's no public link yet, and more detail will be added here once it's further along.",
-    status: "in-progress",
+      "EverRoutine is a student-focused planner for keeping classes, assignments, routines, and academic life in one place. It's ready to use — a fuller write-up will be added here soon.",
+    status: "use-ready",
     tags: ["student", "productivity", "planning"],
     technologies: [],
+    url: "https://everroutine.tinyutility.space",
     accent: { from: "#6fd6bd", to: "#5fb0c9" },
   },
   {
