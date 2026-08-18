@@ -36,8 +36,13 @@ export interface Project {
   technologies: string[];
   /** Live app URL. Omitted when a project has no public URL yet. */
   url?: string;
-  /** Featured projects get more visual space on the Hub. */
-  featured?: boolean;
+  /**
+   * True only for the project that marks where the timeline's threads
+   * come together (TinyUtility Hub). Renders with its ocean photo, a
+   * touch more visual weight, and a "Featured" label — still sized as
+   * a timeline card, not a page-dominating hero.
+   */
+  spotlight?: boolean;
   accent: ProjectAccent;
   /** Notable, verified features — omitted rather than guessed. */
   features?: string[];
@@ -58,26 +63,36 @@ export const statusLabels: Record<ProjectStatus, string> = {
   archived: "Archived",
 };
 
+/**
+ * Order here is the homepage timeline's visual journey, not a build or
+ * chronological date — BatchPilot first, TinyUtility Hub last as the
+ * point where the threads come together.
+ */
 export const projects: Project[] = [
   {
-    slug: "tinyutility-hub",
-    name: "TinyUtility Hub",
+    slug: "batchpilot",
+    name: "BatchPilot",
     description:
-      "The collection itself — a home for the things I build, experiment with, and put to use.",
+      "A practical workflow tool built to make batch-based operations easier to manage.",
     longDescription:
-      "TinyUtility Hub is the home for everything built under TinyUtility: websites, web apps, tools, experiments, and prototypes, gathered in one place instead of scattered across separate links. It's built to make adding the next project as easy as adding one entry to a list.",
-    status: "live",
-    tags: ["hub", "portfolio", "personal"],
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    url: "https://hub.tinyutility.space",
-    featured: true,
-    hideOpenOnCard: true,
-    accent: { from: "#5fd0e8", to: "#7c93f0" },
-    features: [
-      "An editorial, non-uniform collection layout instead of a plain card grid",
-      "Reusable project card and detail-page architecture — new projects need only new data",
-      "Fully static — no database, accounts, or backend service",
-    ],
+      "BatchPilot is a practical workflow tool built to make batch-based operations easier to manage. It's ready to use — a fuller write-up will be added here soon.",
+    status: "use-ready",
+    tags: ["workflow", "management", "productivity"],
+    technologies: [],
+    url: "https://batchpilot.tinyutility.space",
+    accent: { from: "#6a8fd0", to: "#8f6fd0" },
+  },
+  {
+    slug: "everroutine",
+    name: "EverRoutine",
+    description:
+      "A student-focused planner for keeping classes, assignments, routines, and academic life in one place.",
+    longDescription:
+      "EverRoutine is a student-focused planner for keeping classes, assignments, routines, and academic life in one place. It's currently in progress — there's no public link yet, and more detail will be added here once it's further along.",
+    status: "in-progress",
+    tags: ["student", "productivity", "planning"],
+    technologies: [],
+    accent: { from: "#6fd6bd", to: "#5fb0c9" },
   },
   {
     slug: "reverie",
@@ -93,18 +108,6 @@ export const projects: Project[] = [
     accent: { from: "#8fa3f0", to: "#b39ce8" },
   },
   {
-    slug: "everroutine",
-    name: "EverRoutine",
-    description:
-      "A student-focused planner for keeping classes, assignments, routines, and academic life in one place.",
-    longDescription:
-      "EverRoutine is a student-focused planner for keeping classes, assignments, routines, and academic life in one place. It's currently in progress — there's no public link yet, and more detail will be added here once it's further along.",
-    status: "in-progress",
-    tags: ["student", "productivity", "planning"],
-    technologies: [],
-    accent: { from: "#6fd6bd", to: "#5fb0c9" },
-  },
-  {
     slug: "fsts",
     name: "FSTS",
     description:
@@ -117,30 +120,29 @@ export const projects: Project[] = [
     accent: { from: "#7ea8d8", to: "#5f7fb0" },
   },
   {
-    slug: "batchpilot",
-    name: "BatchPilot",
+    slug: "tinyutility-hub",
+    name: "TinyUtility Hub",
     description:
-      "A practical workflow tool built to make batch-based operations easier to manage.",
+      "The collection itself — a home for the things I build, experiment with, and put to use.",
     longDescription:
-      "BatchPilot is a practical workflow tool built to make batch-based operations easier to manage. It's ready to use — a fuller write-up will be added here soon.",
-    status: "use-ready",
-    tags: ["workflow", "management", "productivity"],
-    technologies: [],
-    url: "https://batchpilot.tinyutility.space",
-    accent: { from: "#6a8fd0", to: "#8f6fd0" },
+      "TinyUtility Hub is the home for everything built under TinyUtility: websites, web apps, tools, experiments, and prototypes, gathered in one place instead of scattered across separate links. It's built to make adding the next project as easy as adding one entry to a list.",
+    status: "live",
+    tags: ["hub", "portfolio", "personal"],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    url: "https://hub.tinyutility.space",
+    spotlight: true,
+    hideOpenOnCard: true,
+    accent: { from: "#5fd0e8", to: "#7c93f0" },
+    features: [
+      "An editorial, non-uniform collection layout instead of a plain card grid",
+      "Reusable project card and detail-page architecture — new projects need only new data",
+      "Fully static — no database, accounts, or backend service",
+    ],
   },
 ];
 
 export function getAllProjects(): Project[] {
   return projects;
-}
-
-export function getFeaturedProject(): Project | undefined {
-  return projects.find((project) => project.featured);
-}
-
-export function getSecondaryProjects(): Project[] {
-  return projects.filter((project) => !project.featured);
 }
 
 export function getProjectBySlug(slug: string): Project | undefined {

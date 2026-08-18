@@ -20,16 +20,21 @@ import { OceanPhoto } from "@/components/ocean-photo";
  * have an Open link, or "Use-ready" and still have none. When there's
  * nothing public to show yet, the action area is simply omitted rather
  * than filled with a redundant status repeat.
+ *
+ * `spotlight` (currently only TinyUtility Hub, where the timeline's
+ * threads come together) renders with the ocean photo, a touch more
+ * size, and a "Featured" label — still a timeline card, not the
+ * page-dominating hero that role belongs to `RootHero` now.
  */
 export function ProjectCard({ project }: { project: Project }) {
-  const { slug, name, description, status, tags, featured, accent, url, hideOpenOnCard } =
+  const { slug, name, description, status, tags, spotlight, accent, url, hideOpenOnCard } =
     project;
   const showOpenAction = Boolean(url) && !hideOpenOnCard;
 
   return (
     <article
       className={`group relative isolate flex flex-col justify-between overflow-hidden rounded-3xl p-6 glass-panel card-surface sm:p-8 ${
-        featured ? "min-h-[20rem] sm:min-h-[22rem] lg:p-12" : "min-h-[16rem]"
+        spotlight ? "min-h-[19rem] sm:min-h-[21rem]" : "min-h-[16rem]"
       }`}
     >
       {/* Card identity glow, tied to this project's accent colors. */}
@@ -41,7 +46,7 @@ export function ProjectCard({ project }: { project: Project }) {
         }}
       />
 
-      {featured && <OceanPhoto />}
+      {spotlight && <OceanPhoto />}
 
       <Link
         href={`/projects/${slug}`}
@@ -51,7 +56,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
       <div className="relative flex items-start justify-between gap-4">
         <StatusBadge status={status} />
-        {featured && (
+        {spotlight && (
           <span className="rounded-full border border-glass-border bg-white/[0.03] px-2.5 py-1 text-xs font-medium tracking-wide text-cyan-glow">
             Featured
           </span>
@@ -60,27 +65,17 @@ export function ProjectCard({ project }: { project: Project }) {
 
       <div className="relative mt-6 flex flex-1 flex-col justify-end gap-3 sm:mt-8">
         <h3
-          className={`font-display leading-tight text-foreground ${
-            featured
-              ? "text-4xl sm:text-5xl"
-              : "flex min-h-[2.4em] items-center text-2xl sm:text-3xl"
+          className={`flex min-h-[2.4em] items-center font-display leading-tight text-foreground ${
+            spotlight ? "text-3xl sm:text-4xl" : "text-2xl sm:text-3xl"
           }`}
         >
           {name}
         </h3>
-        <p
-          className={`max-w-md text-sm leading-relaxed text-muted sm:text-base ${
-            featured ? "" : "min-h-[4.8em] line-clamp-3"
-          }`}
-        >
+        <p className="min-h-[4.8em] max-w-md text-sm leading-relaxed text-muted line-clamp-3 sm:text-base">
           {description}
         </p>
 
-        <div
-          className={`mt-1 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 ${
-            featured ? "" : "min-h-[6.75rem]"
-          }`}
-        >
+        <div className="mt-1 flex min-h-[6.75rem] flex-wrap items-center justify-between gap-x-4 gap-y-2">
           <ul className="flex flex-wrap gap-2">
             {tags.slice(0, 3).map((tag) => (
               <li
